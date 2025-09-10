@@ -8,8 +8,12 @@
       <p>Get it done today</p>
       
         <!-- add HTML code here -->
+      <form name="form" action="./ex3.html" onsubmit="addItem(event)">
+         <input type="text" name="item" id="userinput"/>
+         <input type="submit" name="Submit" value="Enter" id="enter"/>
+      </form>
 
-      <ul>
+      <ul id="shoppingList">
          <li>Notebook</li>
          <li>Jello</li>
          <li>Spinach</li>
@@ -20,7 +24,37 @@
       
       <script>
       
-        // add code here
+         // add code here
+         function addItem(event){
+
+            // prevent page to refresh
+            event.preventDefault();
+
+            // get input element
+            var inputValue = document.getElementById("userinput").value.trim();
+
+            // check if the field is empty
+            if (inputValue === ""){
+               alert("Should not submit empty item")
+               return false;
+            }
+
+            // create a new <li> element
+            var li = document.createElement("li");
+
+            // set input
+            li.textContent = inputValue;
+
+            // get the ul list
+            var shoppingList = document.getElementById("shoppingList");
+
+            // add to the list
+            shoppingList.appendChild(li);
+
+            // set value to empty after appending
+            document.getElementById("userinput").value = "";
+            
+         }
 
       </script>
  
